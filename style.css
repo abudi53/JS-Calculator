@@ -41,6 +41,7 @@ html, body {
     font-size: 1.5em;
     background-color: #50577A;
     border: 0;
+    border-radius: 1px;
 }
 
 #operate {
@@ -48,4 +49,19 @@ html, body {
 }
 
 #dot {
-font-weight: 900;}
+font-weight: 900;
+}
+
+.buttons button:hover {
+    background-color: #474E68;
+    transition: 0.05s;
+}
+
+.buttons button:active {
+    background-color: #404258;
+
+}
+
+#operate:active {
+    background-color: rgb(136, 116, 6);
+}
