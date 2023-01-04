@@ -30,9 +30,6 @@ class Calculator {
             return this.divide(a, b);
         }
     }
-
-
-
 }
 
 console.log(Calculator.operate("+", 3, 5));
