@@ -15,10 +15,14 @@ class Calculator {
         return (a / b).toFixed(2);
     }
 
+    static modulo(a, b) {
+        return (a % b).toFixed(2);
+    }
+
     static operate(op, a, b) {
         // op can be +, -, *, /
         console.log(a, op, b);
-        if (op !== "+" && op !== "-" && op !== "X" && op !== "÷") {
+        if (op !== "+" && op !== "-" && op !== "X" && op !== "÷" && op !== "%") {
             return 0
         } else if (op === "+") {
             return this.sum(parseInt(a), parseInt(b));
@@ -27,7 +31,13 @@ class Calculator {
         } else if (op === "X"){
             return this.multiply(parseInt(a), parseInt(b));
         } else if (op === "÷") {
-            return this.divide(parseInt(a), parseInt(b));
+            if (parseInt(b) === 0) {
+                alert("You can't divide by 0 you sussy baka")
+                return 0
+            }else{
+            return this.divide(parseInt(a), parseInt(b));}
+        } else if (op === "%") {
+            return this.modulo(parseInt(a), parseInt(b));
         }
     }
 }
@@ -43,6 +53,7 @@ buttons.forEach(button => {
     button.addEventListener("click", e => {
         let i = pastE;
         pastE = e.target.textContent;
+        console.log(i);
         switch (e.target.textContent) {
             case "1":
                 singleOperation += e.target.textContent;
@@ -89,10 +100,13 @@ buttons.forEach(button => {
                 singleOperation = singleOperation.slice(0, singleOperation.length -1)
                 break;
             case "+":
-                if (i !== "+" && i !== "" && i !== "-" && i !== "X" && i !== "÷" && i !== "%") {
+                if (i !== "+" && i !== "" && i !== "-" && i !== "X" && i !== "÷" && i !== "%" && display.textContent !== "") {
                     if (i === "=") {
-                        
-
+                        let numA = display.textContent;
+                        let opA = e.target.textContent;
+                        operations = [{num: numA, op: opA}]
+                        console.log(operations);
+                        singleOperation = ""
                     }else{
                     let numA = display.textContent;
                     let opA = e.target.textContent;
@@ -106,7 +120,14 @@ buttons.forEach(button => {
                 }
                 break;
             case "-":
-                if (i !== "+" && i !== "" && i !== "-" && i !== "X" && i !== "÷" && i !== "%") {
+                if (i !== "+" && i !== "" && i !== "-" && i !== "X" && i !== "÷" && i !== "%" && display.textContent !== "") {
+                    if (i === "=") {
+                        let numA = display.textContent;
+                        let opA = e.target.textContent;
+                        operations = [{num: numA, op: opA}]
+                        console.log(operations);
+                        singleOperation = ""
+                    }else{
                     let numA = display.textContent;
                     let opA = e.target.textContent;
                     singleOperation = ""
@@ -115,11 +136,18 @@ buttons.forEach(button => {
                     if (operations.length === 2) {
                         operations = [{num: Calculator.operate(operations[0].op, operations[0].num, numA), op: opA}]
                         display.textContent = operations[0].num
-                    }
+                    }}
                 }
                 break;
             case "X":
-                if (i !== "+" && i !== "" && i !== "-" && i !== "X" && i !== "÷" && i !== "%") {
+                if (i !== "+" && i !== "" && i !== "-" && i !== "X" && i !== "÷" && i !== "%" && display.textContent !== "") {
+                    if (i === "=") {
+                        let numA = display.textContent;
+                        let opA = e.target.textContent;
+                        operations = [{num: numA, op: opA}]
+                        console.log(operations);
+                        singleOperation = ""
+                    }else{
                     let numA = display.textContent;
                     let opA = e.target.textContent;
                     singleOperation = ""
@@ -128,11 +156,18 @@ buttons.forEach(button => {
                     if (operations.length === 2) {
                         operations = [{num: Calculator.operate(operations[0].op, operations[0].num, numA), op: opA}]
                         display.textContent = operations[0].num
-                    }
+                    }}
                 }
                 break;
             case "÷":
-                if (i !== "+" && i !== "" && i !== "-" && i !== "X" && i !== "÷" && i !== "%") {
+                if (i !== "+" && i !== "" && i !== "-" && i !== "X" && i !== "÷" && i !== "%" && display.textContent !== "") {
+                    if (i === "=") {
+                        let numA = display.textContent;
+                        let opA = e.target.textContent;
+                        operations = [{num: numA, op: opA}]
+                        console.log(operations);
+                        singleOperation = ""
+                    }else{
                     let numA = display.textContent;
                     let opA = e.target.textContent;
                     singleOperation = ""
@@ -141,11 +176,18 @@ buttons.forEach(button => {
                     if (operations.length === 2) {
                         operations = [{num: Calculator.operate(operations[0].op, operations[0].num, numA), op: opA}]
                         display.textContent = operations[0].num
-                    }
+                    }}
                 }
                 break;
             case "%":
-                if (i !== "+" && i !== "" && i !== "-" && i !== "X" && i !== "÷" && i !== "%") {
+                if (i !== "+" && i !== "" && i !== "-" && i !== "X" && i !== "÷" && i !== "%" && display.textContent !== "") {
+                    if (i === "=") {
+                        let numA = display.textContent;
+                        let opA = e.target.textContent;
+                        operations = [{num: numA, op: opA}]
+                        console.log(operations);
+                        singleOperation = ""
+                    }else{
                     let numA = display.textContent;
                     let opA = e.target.textContent;
                     singleOperation = ""
@@ -154,7 +196,7 @@ buttons.forEach(button => {
                     if (operations.length === 2) {
                         operations = [{num: Calculator.operate(operations[0].op, operations[0].num, numA), op: opA}]
                         display.textContent = operations[0].num
-                    }
+                    }}
                 }
                 break;
             case "C":
@@ -165,10 +207,8 @@ buttons.forEach(button => {
                 pastE = ""
                 break;
             case "=":
-                if (i !== "+" && i !== "" && i !== "-" && i !== "X" && i !== "÷" && i !== "%") {
-                    console.log(operations);
+                if (i !== "+" && i !== "" && i !== "-" && i !== "X" && i !== "÷" && i !== "%" && i !== "=") {
                     let numA = display.textContent;
-                    singleOperation = ""
 
                     if (operations.length === 1) {
                         display.textContent = Calculator.operate(operations[0].op, operations[0].num, numA)
